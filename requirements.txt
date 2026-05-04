@@ -1,0 +1,55 @@
+# ==============================================================================
+# RFVR Standalone — Python dependencies
+# Tested with Python 3.10, CUDA 12.8
+# ==============================================================================
+
+# --- PyTorch (install FIRST with the appropriate CUDA build) ------------------
+# See https://pytorch.org/get-started/locally/ for the right index URL.
+# Example for CUDA 12.8:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+torch>=2.4.0
+torchvision>=0.19.0
+
+# --- Core diffusion / model stack --------------------------------------------
+diffusers>=0.30.0
+transformers>=4.44.0
+accelerate>=0.30.0
+safetensors>=0.4.0
+omegaconf>=2.3.0
+huggingface-hub>=0.24.0
+
+# --- Video / image I/O -------------------------------------------------------
+av>=12.0.0
+decord>=0.6.0
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# --- Numerical / vision utilities --------------------------------------------
+numpy>=1.24.0,<2.0
+scipy>=1.10.0
+scikit-image>=0.21.0
+einops>=0.7.0
+timm>=0.9.0
+
+# --- Face models -------------------------------------------------------------
+insightface>=0.7.3
+facexlib>=0.3.0
+onnxruntime-gpu>=1.16.0  # required by insightface; use onnxruntime if no GPU
+
+# --- Text / tokenisation helpers ---------------------------------------------
+ftfy>=6.1.0
+regex>=2023.0.0
+
+# --- Misc --------------------------------------------------------------------
+requests>=2.28.0
+tqdm>=4.64.0
+validators>=0.20.0
+
+# --- Optional: memory-efficient attention (strongly recommended) -------------
+xformers>=0.0.27
+
+# --- Optional: sequence-parallel distributed inference ----------------------
+# xfuser  # or paifuser — only needed for multi-GPU sequence parallelism
+
+# --- Optional: fused CUDA kernels (marginal speed gain) ----------------------
+# apex  # install from https://github.com/NVIDIA/apex if desired

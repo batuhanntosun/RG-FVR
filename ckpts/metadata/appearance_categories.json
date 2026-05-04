@@ -1,0 +1,39 @@
+{
+    "appearance_categories" : {
+        "gender": [
+            "male"
+        ],
+        "age": [],
+        "image_quality": [],
+        "face_shape_and_skin": [],
+        "hair": [
+            "black_hair",
+            "blonde_hair",
+            "brown_hair",
+            "gray_hair",
+            "straight_hair",
+            "wavy_hair",
+            "long_hair",
+            "bangs",
+            "bald"
+        ],
+        "facial_hair": [
+            "no_beard",
+            "mustache",
+            "goatee",
+            "sideburns",
+            "5_o_clock_shadow"
+        ],
+        "eyes_and_eyebrows": [],
+        "nose_and_mouth": [],
+        "accessories_and_makeup": [
+            "eyeglasses",
+            "sunglasses",
+            "wearing_earrings",
+            "wearing_necklace",
+            "wearing_necktie",
+            "wearing_hat",
+            "wearing_mask"
+        ]
+    }
+}

@@ -1,0 +1,65 @@
+format: civitai
+pipeline: RGFVR
+
+transformer_kwargs:
+  _class_name: WanRGFVRModel
+  _diffusers_version: 0.30.0
+  dim: 1536
+  eps: 1e-06
+  ffn_dim: 8960
+  freq_dim: 256
+  in_dim: 32
+  in_dim_img:
+    - 1280 # id_cond
+    - 1024 # id_vit_cond
+  model_type: i2v # 'i2v' enables DPDC cross-attention blocks (reference-guided), 't2v' is text-only baseline
+  num_heads: 12
+  num_layers: 30
+  out_dim: 16
+  text_len: 512
+  cross_attn_seq_len: 578
+
+transformer_additional_kwargs:
+  transformer_subpath: ./
+  dict_mapping:
+    in_dim: in_channels
+    dim: hidden_size
+
+# Paths below are relative to the ckpts/ directory.
+vae_kwargs:
+  vae_subpath: vae/Wan2.1_VAE.pth
+  temporal_compression_ratio: 4
+  spatial_compression_ratio: 8
+
+text_encoder_kwargs:
+  text_encoder_subpath: text_encoder/models_t5_umt5-xxl-enc-bf16.pth
+  tokenizer_subpath: tokenizer
+  text_length: 512
+  vocab: 256384
+  dim: 4096
+  dim_attn: 4096
+  dim_ffn: 10240
+  num_heads: 64
+  num_layers: 24
+  num_buckets: 32
+  shared_pos: False
+  dropout: 0.0
+
+scheduler_kwargs:
+  scheduler_subpath: scheduler/scheduler_config.json
+  num_train_timesteps: 1000
+  shift: 5.0
+  use_dynamic_shifting: false
+  base_shift: 0.5
+  max_shift: 1.15
+  base_image_seq_len: 256
+  max_image_seq_len: 4096
+
+# Kept for reference; not required by the restorer pipeline.
+image_encoder_kwargs:
+  image_encoder_subpath: models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth
+
+face_encoder_kwargs:
+  face_encoder_path: face_encoder
+  farl_path: farl
+  arcface_training_path: arcface/arcface-r100-glint360k.pth

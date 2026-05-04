@@ -1,0 +1,40 @@
+{
+  "_class_name": "WanRGFVRModel",
+  "_diffusers_version": "0.35.2",
+  "add_control_adapter": false,
+  "add_ref_conv": false,
+  "cross_attn_norm": true,
+  "cross_attn_seq_len": 578,
+  "cross_attn_type": null,
+  "dim": 1536,
+  "downscale_factor_control_adapter": 8,
+  "eps": 1e-06,
+  "ffn_dim": 8960,
+  "freq_dim": 256,
+  "hidden_size": 1536,
+  "in_channels": 32,
+  "in_dim": 32,
+  "in_dim_control_adapter": 24,
+  "in_dim_img": [
+    1280,
+    1024
+  ],
+  "in_dim_ref_conv": 16,
+  "model_type": "i2v",
+  "num_heads": 12,
+  "num_layers": 30,
+  "out_dim": 16,
+  "patch_size": [
+    1,
+    2,
+    2
+  ],
+  "perceive_attention": false,
+  "qk_norm": true,
+  "text_dim": 4096,
+  "text_len": 512,
+  "window_size": [
+    -1,
+    -1
+  ]
+}
