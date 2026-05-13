@@ -44,10 +44,8 @@ N_FRAMES = 81 # Set integer (e.g. 21) or None for all frames
 #   <ckpts_dir>/vae/Wan2.1_VAE.pth
 #   <ckpts_dir>/text_encoder/
 #   <ckpts_dir>/tokenizer/
-#   <ckpts_dir>/scheduler/
 #   <ckpts_dir>/face_encoder/          (prepare_face_models reads `face_encoder/` subdir inside ckpts_dir)
 #   <ckpts_dir>/farl/
-#   <ckpts_dir>/arcface/
 #   <ckpts_dir>/metadata/meta_info.json
 #   <ckpts_dir>/metadata/appearance_categories.json
 DEFAULT_CKPTS_DIR = str(Path(__file__).resolve().parent / "ckpts")
@@ -112,7 +110,7 @@ def parse_args():
                             "Directory containing all model weights and metadata. "
                             f"Default: {DEFAULT_CKPTS_DIR}. "
                             "Expected subfolders: transformer/, vae/, text_encoder/, tokenizer/, "
-                            "scheduler/, face_encoder/, farl/, arcface/, metadata/ and a config.yaml."
+                            "face_encoder/, farl/, metadata/ and a config.yaml."
                         ))
     return parser.parse_args()
 

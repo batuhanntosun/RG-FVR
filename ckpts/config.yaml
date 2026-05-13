@@ -46,7 +46,6 @@ text_encoder_kwargs:
   dropout: 0.0
 
 scheduler_kwargs:
-  scheduler_subpath: scheduler/scheduler_config.json
   num_train_timesteps: 1000
   shift: 5.0
   use_dynamic_shifting: false
@@ -54,12 +53,3 @@ scheduler_kwargs:
   max_shift: 1.15
   base_image_seq_len: 256
   max_image_seq_len: 4096
-
-# Kept for reference; not required by the restorer pipeline.
-image_encoder_kwargs:
-  image_encoder_subpath: models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth
-
-face_encoder_kwargs:
-  face_encoder_path: face_encoder
-  farl_path: farl
-  arcface_training_path: arcface/arcface-r100-glint360k.pth

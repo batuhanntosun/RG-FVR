@@ -53,18 +53,63 @@ ckpts/
 ├── dmd/
 │   └── generator_lora.safetensors  # DMD LoRA weights (3-step distilled)
 ├── vae/
+│   └── Wan2.1_VAE.pth
 ├── text_encoder/         # WanT5
+│   └── models_t5_umt5-xxl-enc-bf16.pth
 ├── tokenizer/
-├── scheduler/
+│   ├── special_tokens_map.json
+│   ├── spiece.model
+│   ├── tokenizer.json
+│   └── tokenizer_config.json
 ├── face_encoder/         # ArcFace (AntelopeV2) + EVA02-CLIP-L-14-336
-├── farl/                 # FaRL attribute predictor
-├── arcface/
+│   ├── EVA02_CLIP_L_336_psz14_s6B.pt
+│   ├── detection_Resnet50_Final.pth
+│   ├── parsing_bisenet.pth
+│   ├── parsing_parsenet.pth
+│   └── models/
+├── facer/                # FaRL attribute predictor
+│   └── face_attribute.farl.celeba.pt
 └── metadata/
     ├── meta_info.json
     └── appearance_categories.json
 ```
 
 The `dmd/` subfolder is only required for DMD inference (`inference_dmd.py`).
+
+### Downloading weights
+
+#### From HuggingFace — [Wan-AI/Wan2.1-T2V-1.3B](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/tree/main)
+
+| File | Destination |
+|---|---|
+| [`Wan2.1_VAE.pth`](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/blob/main/Wan2.1_VAE.pth) (508 MB) | `ckpts/vae/` |
+| [`models_t5_umt5-xxl-enc-bf16.pth`](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/blob/main/models_t5_umt5-xxl-enc-bf16.pth) (11.4 GB) | `ckpts/text_encoder/` |
+| All 4 files under [`google/umt5-xxl/`](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/tree/main/google/umt5-xxl) | `ckpts/tokenizer/` |
+
+The `google/umt5-xxl/` directory contains: `special_tokens_map.json`, `spiece.model`, `tokenizer.json`, `tokenizer_config.json`.
+
+#### From HuggingFace — [BestWishYsh/ConsisID-preview](https://huggingface.co/BestWishYsh/ConsisID-preview/tree/main/face_encoder)
+
+Download the following files from [`face_encoder/`](https://huggingface.co/BestWishYsh/ConsisID-preview/tree/main/face_encoder) into `ckpts/face_encoder/`, preserving the `models/` subdirectory structure:
+
+| File | Size | Used for |
+|---|---|---|
+| `EVA02_CLIP_L_336_psz14_s6B.pt` | 856 MB | EVA02-CLIP visual backbone |
+| `detection_Resnet50_Final.pth` | 109 MB | RetinaFace face detector (facexlib) |
+| `parsing_bisenet.pth` | 53 MB | Face parsing (facexlib) |
+| `parsing_parsenet.pth` | 85 MB | Face parsing (facexlib) |
+| `models/` (subdirectory) | — | InsightFace ArcFace embeddings (antelopev2) |
+
+#### From GitHub — [FacePerceiver/facer](https://github.com/FacePerceiver/facer/releases/tag/models-v1)
+
+Download [`face_attribute.farl.celeba.pt`](https://github.com/FacePerceiver/facer/releases/download/models-v1/face_attribute.farl.celeba.pt) into `ckpts/facer/`.
+
+#### From MediaTUM — RGFVR model weights *(TODO: upload pending)*
+
+The following weights are specific to RGFVR and will be uploaded to MediaTUM:
+
+- `ckpts/transformer/` — WanRGFVRModel weights
+- `ckpts/dmd/generator_lora.safetensors` — DMD LoRA weights (required for `inference_dmd.py` only)
 
 ---
 
@@ -143,3 +188,17 @@ python inference.py --video_path video.mp4 --reference_path ref.jpg --result_pat
 # Save individual frames alongside the video
 python inference_dmd.py --video_path video.mp4 --reference_path ref.jpg --result_path out/ --save_frames
 ```
+
+---
+
+## Acknowledgements
+
+This project builds on code and model weights from the following works. We thank the authors for releasing their work openly:
+
+- **[Wan2.1](https://github.com/Wan-Video/Wan2.1)** — base video diffusion model, VAE, and text encoder
+- **[VideoX-Fun](https://github.com/aigc-apps/VideoX-Fun)** — training and inference framework
+- **[DiffSynth-Studio](https://github.com/modelscope/diffsynth-studio)** — scheduler and diffusion utilities
+- **[ConsisID](https://github.com/PKU-YuanGroup/ConsisID)** — face encoder models
+- **[EVA-CLIP](https://github.com/baaivision/EVA/tree/master/EVA-CLIP)** — EVA02-CLIP visual backbone
+- **[InsightFace](https://github.com/deepinsight/insightface)** — ArcFace identity embeddings
+- **[Facer](https://github.com/FacePerceiver/facer)** — FaRL face attribute predictor
