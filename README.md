@@ -12,8 +12,8 @@ Given a degraded face video and a high-quality reference image of the same subje
 - **ArcFace** (iResNet / AntelopeV2, InsightFace) — global identity embedding
 - **EVA02-CLIP-L-14-336** (EVA-ViT) — global CLIP embedding + local patch-level features
 
-**Descriptive features** — *how* the person looks:
-- **FaRL** (Face Representation Learning)\* predicts face attributes from the reference image
+**Descriptive features** — *how* the person looks (following a similar manner to [IP-FVR](https://arxiv.org/abs/2507.10293)):
+- **FaRL** (Face Representation Learning) predicts face attributes from the reference image
 - Attributes are filtered by a confidence threshold and a selectable detail level (`--degree`)
 - The resulting description is encoded by the **WanT5** text encoder into conditioning embeddings
 
