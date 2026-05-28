@@ -202,3 +202,4 @@ This project builds on code and model weights from the following works. We thank
 - **[EVA-CLIP](https://github.com/baaivision/EVA/tree/master/EVA-CLIP)** — EVA02-CLIP visual backbone
 - **[InsightFace](https://github.com/deepinsight/insightface)** — ArcFace identity embeddings
 - **[Facer](https://github.com/FacePerceiver/facer)** — FaRL face attribute predictor
+- **[CausVid](https://github.com/tianweiy/CausVid)** — DMD distillation approach
