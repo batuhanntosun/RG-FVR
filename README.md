@@ -1,25 +1,23 @@
 # Subject-Agnostic Identity-Preserving Face Video Restoration with a Reference Guidance
-
-Single-clip face video restoration (**RGFVR**) using a high-quality reference image of the target subject.
+Cem Eteke*, Batuhan Tosun*, Eckehard Steinbach  
+Chair of Media Technology, Munich Institute of Robotics and Machine Intelligence  
+School of Computation, Information, and Technology, Technical University of Munich, 80333 Munich, Germany
 
 ---
 
-## Method overview
+## Overview
+![Overview](assets/overview.png)
 
-Given a degraded face video and a high-quality reference image of the same subject, RGFVR restores the video while preserving the subject's identity. It conditions the diffusion model on two complementary feature types extracted from the reference image.
+## Abstract
 
-**Perceptual features** — *who* the person is:
-- **ArcFace** (iResNet / AntelopeV2, InsightFace) — global identity embedding
-- **EVA02-CLIP-L-14-336** (EVA-ViT) — global CLIP embedding + local patch-level features
+<details close>
+<summary><strong>Show abstract</strong></summary>
 
-**Descriptive features** — *how* the person looks (following a similar manner to [IP-FVR](https://arxiv.org/abs/2507.10293)):
-- **FaRL** (Face Representation Learning) predicts face attributes from the reference image
-- Attributes are filtered by a confidence threshold and a selectable detail level (`--degree`)
-- The resulting description is encoded by the **WanT5** text encoder into conditioning embeddings
+<br>
 
-**Input requirements:**
-- Video: 512×512 resolution. Non-square inputs are resized (short-side → 512) and center-cropped automatically.
-- Optimal clip length: **81 frames**. Longer clips may work but are not fully validated.
+Face video restoration from degraded observations is challenging, as it requires simultaneously recovering visual fidelity, temporal consistency, and subject identity. Existing approaches are often either reference-free, which can lead to identity loss when person-specific facial details are lost, or subject-specific, which limits generalization to unseen identities. We propose a subject-agnostic, reference-guided framework for identity-preserving face video restoration. Our method introduces bimodal perceptual-descriptive identity conditioning into a pretrained flow-based text-to-video generator and employs a two-stage training strategy to strengthen identity guidance during restoration. Experiments show that our approach improves restoration fidelity, temporal consistency, and identity preservation, achieving superior performance under challenging video degradations, including downsampling, blur, noise, and compression artifacts.
+
+</details>
 
 ---
 
@@ -76,9 +74,7 @@ ckpts/
 
 The `dmd/` subfolder is only required for DMD inference (`inference_dmd.py`).
 
-### Downloading weights
-
-#### From HuggingFace — [Wan-AI/Wan2.1-T2V-1.3B](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/tree/main)
+### [Wan-AI/Wan2.1-T2V-1.3B](https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/tree/main)
 
 | File | Destination |
 |---|---|
@@ -88,7 +84,7 @@ The `dmd/` subfolder is only required for DMD inference (`inference_dmd.py`).
 
 The `google/umt5-xxl/` directory contains: `special_tokens_map.json`, `spiece.model`, `tokenizer.json`, `tokenizer_config.json`.
 
-#### From HuggingFace — [BestWishYsh/ConsisID-preview](https://huggingface.co/BestWishYsh/ConsisID-preview/tree/main/face_encoder)
+### [BestWishYsh/ConsisID-preview](https://huggingface.co/BestWishYsh/ConsisID-preview/tree/main/face_encoder)
 
 Download the following files from [`face_encoder/`](https://huggingface.co/BestWishYsh/ConsisID-preview/tree/main/face_encoder) into `ckpts/face_encoder/`, preserving the `models/` subdirectory structure:
 
@@ -100,11 +96,11 @@ Download the following files from [`face_encoder/`](https://huggingface.co/BestW
 | `parsing_parsenet.pth` | 85 MB | Face parsing (facexlib) |
 | `models/` (subdirectory) | — | InsightFace ArcFace embeddings (antelopev2) |
 
-#### From GitHub — [FacePerceiver/facer](https://github.com/FacePerceiver/facer/releases/tag/models-v1)
+### [FacePerceiver/facer](https://github.com/FacePerceiver/facer/releases/tag/models-v1)
 
 Download [`face_attribute.farl.celeba.pt`](https://github.com/FacePerceiver/facer/releases/download/models-v1/face_attribute.farl.celeba.pt) into `ckpts/facer/`.
 
-#### From MediaTUM — RGFVR model weights *(TODO: upload pending)*
+### RGFVR model weights *(TODO: upload pending)*
 
 The following weights are specific to RGFVR and will be uploaded to MediaTUM:
 
@@ -190,6 +186,12 @@ python inference_dmd.py --video_path video.mp4 --reference_path ref.jpg --result
 ```
 
 ---
+
+## Results
+
+![Results](assets/results.png)
+
+--
 
 ## Acknowledgements
 
