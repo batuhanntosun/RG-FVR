@@ -6,6 +6,7 @@ School of Computation, Information, and Technology, Technical University of Muni
 *Equal contribution
 
 [![arXiv](https://img.shields.io/badge/arXiv-2606.16401-b31b1b.svg)](https://arxiv.org/abs/2606.16401)
+[![mediaTUM](https://img.shields.io/badge/mediaTUM-checkpoints-blue)](https://mediatum.ub.tum.de/1857002)
 
 ---
 
