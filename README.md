@@ -7,6 +7,7 @@ Chair of Media Technology, Munich Institute of Robotics and Machine Intelligence
 School of Computation, Information, and Technology, Technical University of Munich, 80333 Munich, Germany
 
 *Equal contribution
+
 ---
 
 ## Overview
