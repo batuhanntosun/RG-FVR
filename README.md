@@ -1,13 +1,12 @@
 # RGFVR: Reference-Guided Face Video Restoration with Flow Matching
+[![arXiv](https://img.shields.io/badge/arXiv-2606.16401-b31b1b.svg)](https://arxiv.org/abs/2606.16401)
+[![mediaTUM](https://img.shields.io/badge/mediaTUM-checkpoints-blue)](https://mediatum.ub.tum.de/1857002)
+
 Cem Eteke*, Batuhan Tosun*, Eckehard Steinbach  
 Chair of Media Technology, Munich Institute of Robotics and Machine Intelligence  
 School of Computation, Information, and Technology, Technical University of Munich, 80333 Munich, Germany
 
 *Equal contribution
-
-[![arXiv](https://img.shields.io/badge/arXiv-2606.16401-b31b1b.svg)](https://arxiv.org/abs/2606.16401)
-[![mediaTUM](https://img.shields.io/badge/mediaTUM-checkpoints-blue)](https://mediatum.ub.tum.de/1857002)
-
 ---
 
 ## Overview
