@@ -102,7 +102,7 @@ Download the following files from [`face_encoder/`](https://huggingface.co/BestW
 
 Download [`face_attribute.farl.celeba.pt`](https://github.com/FacePerceiver/facer/releases/download/models-v1/face_attribute.farl.celeba.pt) into `ckpts/facer/`.
 
-### RGFVR model weights *(TODO: upload pending)*
+### RGFVR model weights: [here](https://mediatum.ub.tum.de/1857002)
 
 The following weights are specific to RGFVR and will be uploaded to MediaTUM:
 
