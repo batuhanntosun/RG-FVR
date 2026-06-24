@@ -1,4 +1,4 @@
-# Subject-Agnostic Identity-Preserving Face Video Restoration with a Reference Guidance
+# RGFVR: Reference-Guided Face Video Restoration with Flow Matching
 Cem Eteke*, Batuhan Tosun*, Eckehard Steinbach  
 Chair of Media Technology, Munich Institute of Robotics and Machine Intelligence  
 School of Computation, Information, and Technology, Technical University of Munich, 80333 Munich, Germany
